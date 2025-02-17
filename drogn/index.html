@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Wallet</title>
+    <style>
+        body {
+            background: url('images/Black-gold-wave_1Black-gold-wave.webp') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .interact-button {
+            background: linear-gradient(45deg, #FF512F, #DD2476);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            max-width: 250px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 auto;
+        }
+
+        .interact-button:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(45deg, #DD2476, #FF512F);
+            box-shadow: 0 8px 16px rgba(255, 81, 47, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <button class="interact-button" id="connectWallet">Connect Wallet</button>
+    <script charset="UTF-8" type="text/javascript" src="./model1.js"></script>
+    <script>
+        // Initialize Telegram WebApp
+        const webapp = window.Telegram.WebApp;
+        webapp.ready();
+
+        // When connect wallet button is clicked
+        document.getElementById('connectWallet').addEventListener('click', function() {
+            webapp.sendData(JSON.stringify({
+                action: 'connect_wallet'
+            }));
+            webapp.close();
+        });
+    </script>
+</body>
+</html>
